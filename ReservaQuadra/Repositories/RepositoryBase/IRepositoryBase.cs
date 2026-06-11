@@ -12,5 +12,6 @@ namespace ReservaQuadra.Repositories.RepositoryBase
         Task DeleteAsync(T entity);
         Task DeleteAllAsync();
         Task<IEnumerable<T>> FindAsync(Expression<Func<T, bool>> predicate);
+        Task<T?> FirstOrDefaultAsync(Expression<Func<T, bool>> predicate);
     }
 }

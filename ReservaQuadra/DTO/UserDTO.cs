@@ -1,10 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace ReservaQuadra.Domain
+﻿namespace ReservaQuadra.DTO
 {
-    public class User
+    public class UserDTO
     {
-        [Key]
         public int Id { get; set; }
 
         public string Name { get; set; } = string.Empty;
@@ -12,5 +9,9 @@ namespace ReservaQuadra.Domain
         public string Email { get; set; } = string.Empty;
 
         public string Phone { get; set; } = string.Empty;
+
+        public string PhoneFormat => Phone.Length == 11
+        ? $"({Phone[..2]}) {Phone.Substring(2, 5)}.{Phone.Substring(7, 4)}"
+        : Phone;
     }
 }
