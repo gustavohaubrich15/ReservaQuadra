@@ -4,6 +4,7 @@ using ReservaQuadra.Exceptions;
 using ReservaQuadra.Repositories.UserRepository;
 using ReservaQuadra.Services.GenericService;
 using ReservaQuadra.Validator.UserValidator;
+using ReservaQuadra.Domain;
 
 namespace ReservaQuadra.Services.UserService
 {
@@ -21,6 +22,18 @@ namespace ReservaQuadra.Services.UserService
         {
             _userRepository = userRepository;
             _userValidator = userValidator;
+        }
+
+        public async Task CreateUser(UserDTO dto)
+        {
+            await _userValidator.ValidateUserDTO(dto);
+            var user = new User
+            {
+                Name = dto.Name,
+                Email = dto.Email,
+                Phone = dto.Phone
+            };
+            await _userRepository.CreateAsync(user);
         }
 
         public async Task<ResponseModelDTO<UserDTO>> GetUserByPhone(string phone)

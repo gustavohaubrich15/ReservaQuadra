@@ -16,6 +16,13 @@ namespace ReservaQuadra.Controllers
             _userService = userService;
         }
 
+        [HttpPost]
+        public async Task<ActionResult> CreateUser([FromBody] UserDTO dto)
+        {
+            await _userService.CreateUser(dto);
+            return Ok();
+        }
+
         [HttpGet("GetUserByPhone/{phone}")]
         public async Task<ActionResult<ResponseModelDTO<UserDTO>>> GetUserByPhone(string phone)
         {
