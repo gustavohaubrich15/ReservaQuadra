@@ -30,4 +30,3 @@ API desenvolvida em **ASP.NET Core 8** para  reservas de quadras esportivas.
 - Listar reservas por usuário
 - Listar todas as reservas de um dia específico
 
-## 📂 Estrutura do projeto
