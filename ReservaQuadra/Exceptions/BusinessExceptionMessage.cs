@@ -31,6 +31,9 @@
         public static string ReservationCourtInvalid(int enumLength) => $"Quadra inválida. O número da quadra deve estar entre 1 e {enumLength}";
 
         public static string ReservationDailyLimitReached(int limit) => $"Limite diário de reserva atingido. Você já reservou {limit} vezes. Reserve em outra data ou cancele alguma data já reservada";
+
+        public const string ReservationTimeConflict = "Já existe uma reserva para a quadra no horário informado.";
+
         #endregion
 
     }

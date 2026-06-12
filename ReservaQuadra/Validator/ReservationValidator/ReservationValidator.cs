@@ -51,6 +51,17 @@ namespace ReservaQuadra.Validator.ReservationValidator
                 throw new BusinessException(BusinessExceptionMessage.ReservationDailyLimitReached(MAX_DAILY_RESERVATION_PER_USER));
             }
 
+            var hasConflictReservation = await _reservationRepository.AnyAsync(x =>
+                    x.Court == reservationDTO.Court &&
+                    x.Date == reservationDTO.Date &&
+                    reservationDTO.StartTime < x.EndTime &&
+                   reservationDTO.EndTime > x.StartTime);
+
+            if (hasConflictReservation)
+            {
+                throw new BusinessException(BusinessExceptionMessage.ReservationTimeConflict);
+            }
+
         }
     }
 }
