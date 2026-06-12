@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using ReservaQuadra.Domain;
 using ReservaQuadra.DTO;
 using ReservaQuadra.Services.UserService;
 
@@ -17,10 +18,10 @@ namespace ReservaQuadra.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> CreateUser([FromBody] UserDTO dto)
+        public async Task<ActionResult<ResponseModelDTO<UserDTO>>> CreateUser([FromBody] UserDTO dto)
         {
-            await _userService.CreateUser(dto);
-            return Ok();
+            var response = await _userService.CreateUser(dto);
+            return Created("", response);
         }
 
         [HttpGet("GetUserByPhone/{phone}")]

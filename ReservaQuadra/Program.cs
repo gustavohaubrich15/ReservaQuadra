@@ -6,11 +6,12 @@ using ReservaQuadra.Services.UserService;
 using ReservaQuadra.Repositories.UserRepository;
 using ReservaQuadra.Validator.UserValidator;
 using ReservaQuadra.Services.CourtService;
+using ReservaQuadra.Services.ReservationService;
+using ReservaQuadra.Repositories.ReservationRepository;
+using ReservaQuadra.Validator.ReservationValidator;
 
 var builder = WebApplication.CreateBuilder(args);
 
-
-builder.Services.AddControllers();
 builder.Services.AddControllers(options =>
 {
     options.Filters.Add<CustomExceptionFilter>();
@@ -44,18 +45,14 @@ builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IUserValidator, UserValidator>();
 builder.Services.AddScoped<ICourtService, CourtService>();
+builder.Services.AddScoped<IReservationService, ReservationService>();
+builder.Services.AddScoped<IReservationRepository, ReservationRepository>();
+builder.Services.AddScoped<IReservationValidator, ReservationValidator>();
 
 var app = builder.Build();
-
-
 app.UseSwagger();
 app.UseSwaggerUI();
-
-
 app.UseHttpsRedirection();
-
 app.UseAuthorization();
-
 app.MapControllers();
-
 app.Run();

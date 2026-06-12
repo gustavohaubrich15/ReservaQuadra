@@ -27,11 +27,15 @@ namespace ReservaQuadra.Repositories.RepositoryBase
             return await query.ToListAsync();
         }
 
-        public async Task<T?> GetByIdAsync(int id)
+        public async Task<T?> GetByIdAsync(long id)
         {
             return await _dbSet.FindAsync(id);
         }
 
+        public async Task<int> CountAsync(Expression<Func<T, bool>> predicate)
+        {
+            return await _dbSet.Where(predicate).CountAsync();
+        }
 
         public async Task CreateAsync(T entity)
         {

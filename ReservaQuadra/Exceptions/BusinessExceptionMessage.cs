@@ -4,6 +4,7 @@
     {
 
         #region User Messages
+
         public const string UserNameRequired = "Nome é obrigatório.";
 
         public const string UserNameInvalid = "Informe nome e sobrenome.";
@@ -19,6 +20,18 @@
 
         public const string UserPhoneAlreadyCreated = "Telefone já utilizado por outro usuário.";
 
+        public const string UserNotCreated = "Usuário não criado no sistema. Por favor cadastre primeiro seu número para reservar uma quadra.";
+
         #endregion
+
+
+
+        #region Reservation Messages
+
+        public static string ReservationCourtInvalid(int enumLength) => $"Quadra inválida. O número da quadra deve estar entre 1 e {enumLength}";
+
+        public static string ReservationDailyLimitReached(int limit) => $"Limite diário de reserva atingido. Você já reservou {limit} vezes. Reserve em outra data ou cancele alguma data já reservada";
+        #endregion
+
     }
 }

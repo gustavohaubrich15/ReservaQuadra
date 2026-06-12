@@ -24,7 +24,7 @@ namespace ReservaQuadra.Services.UserService
             _userValidator = userValidator;
         }
 
-        public async Task CreateUser(UserDTO dto)
+        public async Task<ResponseModelDTO<UserDTO>> CreateUser(UserDTO dto)
         {
             await _userValidator.ValidateUserDTO(dto);
             var user = new User
@@ -34,6 +34,10 @@ namespace ReservaQuadra.Services.UserService
                 Phone = dto.Phone
             };
             await _userRepository.CreateAsync(user);
+            dto.Id = user.Id;
+            ResponseModelDTO<UserDTO> response = new ResponseModelDTO<UserDTO>();
+            response.Data = dto;
+            return response;
         }
 
         public async Task<ResponseModelDTO<UserDTO>> GetUserByPhone(string phone)
