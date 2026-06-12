@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using ReservaQuadra.Services.UserService;
 using ReservaQuadra.Repositories.UserRepository;
 using ReservaQuadra.Validator.UserValidator;
+using ReservaQuadra.Services.CourtService;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,7 +16,7 @@ builder.Services.AddControllers(options =>
     options.Filters.Add<CustomExceptionFilter>();
 }).AddJsonOptions(options =>
 {
-    options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve;
+    options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
 });
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
@@ -42,6 +43,7 @@ builder.Services.AddDbContext<ReservaQuadraContext>(options =>
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IUserValidator, UserValidator>();
+builder.Services.AddScoped<ICourtService, CourtService>();
 
 var app = builder.Build();
 

@@ -10,7 +10,7 @@ using ReservaQuadra.Context;
 namespace ReservaQuadra.Migrations
 {
     [DbContext(typeof(ReservaQuadraContext))]
-    [Migration("20260611190047_InitialCreate")]
+    [Migration("20260612121926_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />

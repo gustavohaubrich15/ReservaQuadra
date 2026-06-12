@@ -8,6 +8,9 @@ namespace ReservaQuadra.Context
     {
         public DbSet<User> User { get; set; }
 
+        public DbSet<Reservation> Reservation { get; set; }
+
+
         public ReservaQuadraContext(DbContextOptions<ReservaQuadraContext> options)
         : base(options)
         {

@@ -50,7 +50,8 @@ namespace ReservaQuadra.Services.UserService
             {
                 Id = user.Id,
                 Name = user.Name,
-                Email = user.Email
+                Email = user.Email,
+                Phone = user.Phone
             };
             response.Data = userDTO;
             return response;

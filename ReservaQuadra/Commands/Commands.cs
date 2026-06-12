@@ -1,4 +1,6 @@
-﻿namespace ReservaQuadra.Commands
+﻿using Microsoft.EntityFrameworkCore;
+
+namespace ReservaQuadra.Commands
 {
     public class Commands
     {
@@ -6,7 +8,9 @@
         //Migrations
 
         // Add-Migration CriarBancoTorneio
+        //C:\Users\haubr\.dotnet\tools\dotnet-ef migrations add InitialCreate
 
         // update-database
+        //C:\Users\haubr\.dotnet\tools\dotnet-ef database update
     }
 }
