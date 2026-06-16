@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Numerics;
+using Microsoft.AspNetCore.Mvc;
 using ReservaQuadra.DTO;
 using ReservaQuadra.Services.CourtService;
 using ReservaQuadra.Services.UserService;
@@ -22,6 +23,13 @@ namespace ReservaQuadra.Controllers
         {
             var courts = _courtService.GetAllCourts();
             return Ok(courts);
+        }
+
+        [HttpGet("GetAvailability/{date}")]
+        public async Task<ActionResult<ResponseModelDTO<UserDTO>>> GetAvailability(DateOnly date)
+        {
+            var response = await _courtService.GetAvailabilityCourt(date);
+            return Ok(response);
         }
 
     }

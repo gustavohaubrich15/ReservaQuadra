@@ -22,5 +22,6 @@ namespace ReservaQuadra.Controllers
             var response = await _reservationService.CreateReservation(dto);
             return Created("", response);
         }
+
     }
 }

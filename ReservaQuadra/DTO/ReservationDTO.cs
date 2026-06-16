@@ -5,6 +5,7 @@ namespace ReservaQuadra.DTO
 {
     public class ReservationDTO
     {
+        
         public long Id { get; set; }
 
         public Court Court { get; set; }
